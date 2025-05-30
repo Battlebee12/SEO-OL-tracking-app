@@ -78,38 +78,71 @@ exports.signOut = async (req, res) => {
   }
 };
 
+exports.getAdminShifts = async(req,res) => {
+    const{ student_id, date,has_rsd,name } = req.query;
+    let query = 'SELECT * FROM Shifts';
+    const conditions = [];
+    const values = [];
+    if (student_id) {
+        values.push(student_id);
+        conditions.push(`ol_student_id = $${values.length}`);
+    }
+    if (date) {
+        values.push(date);
+        conditions.push(`DATE(sign_in_time) = $${values.length}`);
+    }
+    if (has_rsd) {
+        conditions.push(`rsd IS NOT NULL`);
+    }
+    if (name) {
+        values.push(`%${name}%`);   
+        conditions.push(`ol_name ILIKE $${values.length}`);
+    }
+    if (conditions.length > 0) {
+        query += ' WHERE ' + conditions.join(' AND ');
+    }
+    query += ' ORDER BY sign_in_time DESC';
+    try {
+        const result = await pool.query(query, values);
+        res.json(result.rows);
+    } catch (err) {
+        console.error('Fetch shifts error:', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
 
-// GET /api/shifts
-exports.getShifts = async (req, res) => {
-  const { student_id, date } = req.query;
-  let query = 'SELECT * FROM Shifts';
-  const conditions = [];
-  const values = [];
 
-  if (student_id) {
-    values.push(student_id);
-    conditions.push(`ol_student_id = $${values.length}`);
-  }
+// // GET /api/shifts
+// exports.getShifts = async (req, res) => {
+//   const { student_id, date } = req.query;
+//   let query = 'SELECT * FROM Shifts';
+//   const conditions = [];
+//   const values = [];
 
-  if (date) {
-    values.push(date);
-    conditions.push(`DATE(sign_in_time) = $${values.length}`);
-  }
+//   if (student_id) {
+//     values.push(student_id);
+//     conditions.push(`ol_student_id = $${values.length}`);
+//   }
 
-  if (conditions.length > 0) {
-    query += ' WHERE ' + conditions.join(' AND ');
-  }
+//   if (date) {
+//     values.push(date);
+//     conditions.push(`DATE(sign_in_time) = $${values.length}`);
+//   }
 
-  query += ' ORDER BY sign_in_time DESC';
+//   if (conditions.length > 0) {
+//     query += ' WHERE ' + conditions.join(' AND ');
+//   }
 
-  try {
-    const result = await pool.query(query, values);
-    res.json(result.rows);
-  } catch (err) {
-    console.error('Fetch shifts error:', err);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-};
+//   query += ' ORDER BY sign_in_time DESC';
+
+//   try {
+//     const result = await pool.query(query, values);
+//     res.json(result.rows);
+//   } catch (err) {
+//     console.error('Fetch shifts error:', err);
+//     res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// };
 
 // GET /api/shifts/export
 // exports.exportShifts = async (req, res) => {

@@ -12,7 +12,11 @@ router.post('/signout', shiftController.signOut);
 
 // @route   GET /api/shifts
 // @desc    Admin: Get all shifts (optionally filtered)
-router.get('/', shiftController.getShifts);
+// router.get('/', shiftController.getShifts);
+
+//@route GET /api/shifts/admin
+// @desc Admin: Get all shifts for a specific OL
+router.get('/admin', shiftController.getAdminShifts);
 
 // @route   GET /api/shifts/export
 // @desc    Admin: Export shifts as CSV
