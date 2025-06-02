@@ -1,0 +1,57 @@
+/* src/Home.css */
+.home-container {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.navbar {
+  background-color: white;
+  border-bottom: 25px solid #002145;
+  padding: 20px 80px 80px 75px ;
+  display: flex;
+  align-items: center;
+}
+
+.navbar h1 {
+  font-size: 1rem;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: #002145;
+  margin: 0;
+  text-align: left;
+}
+
+
+.button-section {
+  display: flex;
+  justify-content: center;
+  text-align: bottom;
+  gap: 40px;
+  margin-top: 200px;
+}
+
+.card {
+  background-color: #002145;
+  color: white;
+  padding: 100px 50px;
+  border-radius: 20px;
+  width: 250px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card h2 {
+  margin-bottom: 100px;
+  font-size: 2rem;
+}
+
+.card p {
+  font-size: 1rem;
+  
+  color: #dcdcdc;
+}

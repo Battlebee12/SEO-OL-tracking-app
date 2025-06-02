@@ -20,6 +20,6 @@ router.get('/admin', shiftController.getAdminShifts);
 
 // @route   GET /api/shifts/export
 // @desc    Admin: Export shifts as CSV
-// router.get('/export', shiftController.exportShifts);
+router.get('/export', shiftController.exportShiftsToExcel);
 
 module.exports = router;

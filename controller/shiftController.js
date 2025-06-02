@@ -1,4 +1,7 @@
 const pool = require('../db');
+const ExcelJS = require('exceljs');
+const fs = require('fs');
+const path = require('path');
 // const { Parser } = require('json2csv');
 
 // POST /api/shifts/signin
@@ -110,6 +113,40 @@ exports.getAdminShifts = async(req,res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 }
+exports.exportShiftsToExcel = async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM Shifts ORDER BY sign_in_time DESC');
+    const shifts = result.rows;
+
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet('Shifts');
+
+    // Define columns
+    worksheet.columns = [
+      { header: 'ID', key: 'id', width: 10 },
+      { header: 'Name', key: 'ol_name', width: 20 },
+      { header: 'Student ID', key: 'ol_student_id', width: 15 },
+      { header: 'Sign In Time', key: 'sign_in_time', width: 25 },
+      { header: 'Sign Out Time', key: 'sign_out_time', width: 25 },
+      { header: 'RSD', key: 'rsd', width: 30 },
+    ];
+
+    // Add rows
+    shifts.forEach(shift => {
+      worksheet.addRow(shift);
+    });
+
+    // Set response headers
+    res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    res.setHeader('Content-Disposition', 'attachment; filename=shifts.xlsx');
+
+    await workbook.xlsx.write(res);
+    res.end();
+  } catch (err) {
+    console.error('Error exporting shifts:', err);
+    res.status(500).json({ error: 'Failed to export shifts' });
+  }
+};
 
 
 // // GET /api/shifts
