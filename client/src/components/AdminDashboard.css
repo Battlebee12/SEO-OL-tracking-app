@@ -1,0 +1,128 @@
+/* src/AdminDashboard.css */
+.admin-container {
+  font-family: sans-serif;
+  background-color: white;
+  color: #002145;
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-bottom: 8px solid #002145;
+}
+
+.ubc-logo {
+  height: 40px;
+}
+
+.admin-header h1 {
+  font-size: 0.9rem;
+  letter-spacing: 0.15rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.admin-body {
+  display: flex;
+}
+
+.admin-sidebar {
+  background-color: #e6e6e6;
+  padding: 20px;
+  width: 200px;
+  min-height: 500px;
+}
+
+.admin-sidebar h2 {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.admin-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-sidebar li {
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #002145;
+}
+
+.admin-sidebar .active {
+  background-color: #002145;
+  color: white;
+}
+
+.admin-main {
+  flex-grow: 1;
+  padding: 30px;
+}
+
+.main-title {
+  background-color: #002145;
+  color: white;
+  padding: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.input-row {
+  display: flex;
+  gap: 40px;
+}
+
+label {
+  font-weight: bold;
+  color: #002145;
+}
+
+.input-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.input-with-icon input {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 1px solid black;
+  background-color: #f0f0f0;
+  width: 200px;
+}
+
+.add-btn {
+  background-color: #002145;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.search-btn {
+  background-color: #002145;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 30px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
