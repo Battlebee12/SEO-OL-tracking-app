@@ -16,7 +16,8 @@ function ShiftForm() {
       return;
     }
 
-    const endpoint = action === 'in' ? '/api/shifts/signin' : '/api/shifts/signout';
+    const endpoint = action === 'in' ? `${process.env.REACT_APP_API_BASE}/api/shifts/signin` : `${process.env.REACT_APP_API_BASE}/api/shifts/signout`;
+
     const payload = action === 'in' ? { name, id, rsd } : { id, rsd };
 
     try {

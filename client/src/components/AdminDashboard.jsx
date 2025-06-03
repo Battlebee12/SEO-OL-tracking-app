@@ -57,28 +57,36 @@ const AdminDashboard = () => {
             <div className="input-row">
               <label>
                 OL Student ID
-                <input
-                  type="text"
-                  value={studentId}
-                  onChange={(e) => setStudentId(e.target.value)}
-                />
+                <div className="input-with-icon">
+                  <input
+                    type="text"
+                    value={studentId}
+                    onChange={(e) => setStudentId(e.target.value)}
+                  />
+                </div>
               </label>
+
               <label>
                 OL Name
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
+                <div className="input-with-icon">
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
               </label>
             </div>
+
             <label>
               Date
-              <input
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-              />
+              <div className="input-with-icon">
+                <input
+                  type="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                />
+              </div>
             </label>
 
             <button type="submit" className="search-btn" disabled={loading}>
@@ -97,6 +105,7 @@ const AdminDashboard = () => {
                     <th>Sign In</th>
                     <th>Sign Out</th>
                     <th>RSD</th>
+                    <th>Duration</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -111,6 +120,10 @@ const AdminDashboard = () => {
                           : "—"}
                       </td>
                       <td>{shift.rsd || "—"}</td>
+                      <td>
+                        {shift.duration_minutes !== null ? `${shift.duration_minutes} min` : "—"}
+                    </td>
+
                     </tr>
                   ))}
                 </tbody>
