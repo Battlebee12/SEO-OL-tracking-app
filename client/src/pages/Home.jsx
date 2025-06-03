@@ -18,6 +18,9 @@ const Home = () => {
           <p>FOR ADDING NEW STUDENTS TO GROUPS</p>
         </div>
       </div>
+      <div className="admin-link">
+        <a href="/admin">Admin Dashboard</a>
+      </div>
     </div>
   );
 };

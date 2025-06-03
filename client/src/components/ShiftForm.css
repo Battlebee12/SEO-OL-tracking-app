@@ -1,0 +1,86 @@
+/* src/OLCheckInOut.css */
+.ol-container {
+  font-family: sans-serif;
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.ol-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: 8px solid #002145;
+  gap: 10px;
+}
+
+.ubc-logo {
+  height: 40px;
+}
+
+.ol-header h1 {
+  font-size: 0.9rem;
+  color: #002145;
+  letter-spacing: 0.15rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.title-bar {
+  background-color: #002145;
+  color: white;
+  padding: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.ol-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.ol-form label {
+  font-weight: bold;
+  color: #002145;
+  letter-spacing: 0.2rem;
+  margin-top: 40px;
+}
+
+.ol-form input[type="text"] {
+  padding: 10px 20px;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 25px;
+  border: 1px solid black;
+  background-color: #E3E3E3;
+}
+
+.radio-group {
+  display: flex;
+  gap: 200px;
+  align-items: center;
+  margin-top: 40px;
+  magin-bottom: 40px;
+}
+
+.radio-group input[type="radio"] {
+  margin-left: 8px;
+  transform: scale(1.3);
+  accent-color: #002145;
+}
+
+button {
+  background-color: #002145;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 30px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 20px;
+}
