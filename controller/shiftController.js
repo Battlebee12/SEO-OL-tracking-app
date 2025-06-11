@@ -186,6 +186,81 @@ exports.exportShiftsToExcel = async (req, res) => {
   }
 };
 
+// controllers/shiftsController.js
+exports.getTotalHours = async (req, res) => {
+  console.log("Query params:", req.query);
+ let { dates, 'dates[]': datesArray, student_id, name } = req.query;
+
+// Normalize dates param from either 'dates' or 'dates[]'
+dates = dates || datesArray;
+
+dates = !dates
+  ? []
+  : Array.isArray(dates)
+  ? dates
+  : [dates];
+
+console.log("Normalized dates:", dates);
+
+
+
+  const values = [];
+  const conditions = [];
+
+  // Optional: Only add date filter if dates are provided
+  if (Array.isArray(dates) && dates.length > 0) {
+  const placeholders = dates.map((_, i) => `$${values.length + i + 1}`).join(", ");
+  conditions.push(`DATE(sign_in_time) IN (${placeholders})`);
+  values.push(...dates);
+  }
+
+
+  if (student_id) {
+    values.push(student_id);
+    conditions.push(`ol_student_id = $${values.length}`);
+  }
+
+  if (name) {
+    values.push(`%${name}%`);
+    conditions.push(`ol_name ILIKE $${values.length}`);
+  }
+
+  // sign_out_time condition is always needed
+  conditions.push(`sign_out_time IS NOT NULL`);
+const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(" AND ")}` : "";
+try{
+const query = `
+  SELECT 
+    ol_name,
+    ol_student_id,
+    SUM(EXTRACT(EPOCH FROM (sign_out_time - sign_in_time)) / 60) AS total_minutes
+  FROM Shifts
+  ${whereClause}
+  GROUP BY ol_name, ol_student_id
+  ORDER BY ol_name ASC
+`;
+
+    console.log("Final query:", query);
+    console.log("With values:", values);
+
+
+    const result = await pool.query(query, values);
+
+    const formatted = result.rows.map(row => ({
+      ol_name: row.ol_name,
+      ol_student_id: row.ol_student_id,
+      total_minutes: Math.round(row.total_minutes),
+    }));
+
+    res.json(formatted);
+  } catch (err) {
+    console.error("Error fetching total hours:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+
+
 // // GET /api/shifts
 // exports.getShifts = async (req, res) => {
 //   const { student_id, date } = req.query;

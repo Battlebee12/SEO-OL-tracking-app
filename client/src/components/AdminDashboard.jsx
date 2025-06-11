@@ -45,7 +45,7 @@ const AdminDashboard = () => {
           <h2>ADMIN DASHBOARD</h2>
           <ul>
             <li className="active">VIEW OL SHIFT</li>
-            <li>FIND STUDENT</li>
+            <li><a href = "/admin/total-hours">TOTAL HOURS</a></li>
             <li>EDIT STUDENT</li>
             <li>GET EXCEL SHEET</li>
           </ul>

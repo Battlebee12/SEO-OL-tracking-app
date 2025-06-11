@@ -22,4 +22,6 @@ router.get('/admin', shiftController.getAdminShifts);
 // @desc    Admin: Export shifts as CSV
 router.get('/export', shiftController.exportShiftsToExcel);
 
+router.get('/total-hours', shiftController.getTotalHours);
+
 module.exports = router;
