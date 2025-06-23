@@ -40,15 +40,6 @@
   margin-bottom: 15px;
   font-weight: bold;
 }
-.admin-sidebar a {
-  color: inherit;         /* Keep the same text color as parent */
-  text-decoration: none;  /* Remove underline */
-}
-
-.admin-sidebar a:hover {
-  text-decoration: underline; /* Optional: show underline on hover */
-  color: #0055a5;             /* Optional: highlight on hover */
-}
 
 .admin-sidebar ul {
   list-style: none;
@@ -175,62 +166,42 @@ label {
   color: #002145;
 }
 
-.edit-form {
-  border: 1px solid #ccc;
-  padding: 1rem;
-  margin-top: 1rem;
-  background: #f9f9f9;
-  border-radius: 10px;
-}
-.edit-form input {
-  display: block;
-  margin-bottom: 0.5rem;
-  padding: 0.4rem;
+.input-with-icon select {
   width: 100%;
-}
-.edit-form button {
-  margin-right: 1rem;
-}
-
-.admin-login {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-  background-color: white;
-  padding: 2rem;
-  color: #002145;
-}
-
-.admin-login h2 {
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.admin-login input {
   padding: 10px 20px;
-  border-radius: 25px;
   border: 1px solid #ccc;
-  width: 250px;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  background-color: #f0f0f0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  font-size: 14px;
+  appearance: none;
+  outline: none;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+  
 }
 
-.admin-login button {
-  background-color: #002145;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 30px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.2s ease;
+.input-with-icon select:hover {
+  border-color: #0055a5; /* UBC blue */
+  background-color: #f1faff;
 }
 
-.admin-login button:hover {
-  background-color: #004080;
+.input-with-icon select:focus {
+  border-color: #0055a5;
+  box-shadow: 0 0 0 2px rgba(0, 85, 165, 0.2);
+  background-color: #fff;
+}
+
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon::after {
+  content: "▼";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: #666;
+  pointer-events: none;
 }

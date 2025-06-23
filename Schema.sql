@@ -5,4 +5,5 @@ CREATE TABLE Shifts (
   sign_in_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   sign_out_time TIMESTAMP,
   rsd TEXT
+  group_no INT,
 );

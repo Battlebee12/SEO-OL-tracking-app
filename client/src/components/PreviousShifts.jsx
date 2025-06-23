@@ -2,10 +2,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./AdminDashboard.css";
-import AdminProtected from "./AdminProtected";
 
 const AdminDashboard = () => {
-  
   const [studentId, setStudentId] = useState("");
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
@@ -38,7 +36,6 @@ const AdminDashboard = () => {
   };
 
   return (
-    <AdminProtected>
     <div className="admin-container">
       <header className="admin-header">
         <img src="/ubc-logo.png" alt="UBC Logo" className="ubc-logo" />
@@ -46,16 +43,15 @@ const AdminDashboard = () => {
       </header>
 
       <div className="admin-body">
-        <aside className="admin-sidebar">
+        {/* <aside className="admin-sidebar">
           <h2>ADMIN DASHBOARD</h2>
           <ul>
             <li className="active">VIEW OL SHIFT</li>
             <li><a href = "/admin/total-hours">TOTAL HOURS</a></li>
             <li><a href = "/admin/shift-exceptions">SHIFT EXCEPTIONS</a></li>
-            <li><a href = "/admin/update-shift">UPDATE SHIFT</a></li>
             <li>GET EXCEL SHEET</li>
           </ul>
-        </aside>
+        </aside> */}
 
         <main className="admin-main">
           <div className="main-title">OL SHIFT DATA</div>
@@ -72,26 +68,6 @@ const AdminDashboard = () => {
                 </div>
               </label>
 
-              <label>
-                OL Name
-                <div className="input-with-icon">
-                  <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
-              </label>
-              <label>
-                OL Group No.
-                <div className="input-with-icon">
-                  <input
-                    type="text"
-                    value={gid}
-                    onChange={(e) => setGid(e.target.value)}
-                  />
-                </div>
-              </label>
             </div>
 
             <label>
@@ -151,7 +127,6 @@ const AdminDashboard = () => {
         </main>
       </div>
     </div>
-    </AdminProtected>
   );
 };
 

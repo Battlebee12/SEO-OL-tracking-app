@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./AdminDashboard.css"; // Reuse existing CSS for perfect match
+import { shiftDays } from "../Constants";
 
-const shiftDays = ["2025-06-11", "2024-08-27", "2024-08-28", "2024-08-29", "2024-09-01"];
+
 
 const TotalHoursPage = () => {
   const [selectedDates, setSelectedDates] = useState([]);
@@ -28,7 +29,7 @@ const TotalHoursPage = () => {
       if (searchID) params.student_id = searchID;
       if (selectedDates.length > 0) params.dates = selectedDates;
 
-      const res = await axios.get("http://localhost:5005/api/shifts/total-hours", {
+      const res = await axios.get(`${process.env.REACT_APP_API_BASE}/api/shifts/total-hours`, {
         params,
       });
 
@@ -58,10 +59,12 @@ const TotalHoursPage = () => {
           <ul>
             <li><a href="/admin">VIEW OL SHIFT</a></li>
             <li className="active">TOTAL HOURS</li>
-            <li>EDIT STUDENT</li>
+            <li><a href = "/admin/shift-exceptions">SHIFT EXCEPTIONS</a></li>
+            <li><a href = "/admin/update-shift">UPDATE SHIFT</a></li>
             <li>GET EXCEL SHEET</li>
           </ul>
         </aside>
+       
 
         <main className="admin-main">
           <div className="main-title">Total Hours Worked</div>

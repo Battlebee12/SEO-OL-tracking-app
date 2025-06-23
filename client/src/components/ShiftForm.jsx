@@ -5,6 +5,7 @@ function ShiftForm() {
   const [name, setName] = useState('');
   const [id, setId] = useState('');
   const [rsd, setRsd] = useState('');
+  const [gid, setGid] = useState('');
   const [action, setAction] = useState('');
   const [message, setMessage] = useState('');
 
@@ -18,7 +19,7 @@ function ShiftForm() {
 
     const endpoint = action === 'in' ? `${process.env.REACT_APP_API_BASE}/api/shifts/signin` : `${process.env.REACT_APP_API_BASE}/api/shifts/signout`;
 
-    const payload = action === 'in' ? { name, id, rsd } : { id, rsd };
+    const payload = action === 'in' ? { name, id, rsd, gid } : { id, rsd };
 
     try {
       const res = await fetch(endpoint, {
@@ -66,6 +67,13 @@ function ShiftForm() {
           onChange={(e) => setId(e.target.value)}
           style={styles.input}
         />
+        <label style={styles.label}>Group Number (if applicable)</label>
+        <input
+          type="text"
+          value={gid}
+          onChange={(e) => setGid(e.target.value)}
+          style={styles.input}
+        />
 
         <div style={styles.radioGroup}>
           <label style={styles.radioLabel}>IN</label>
@@ -73,8 +81,8 @@ function ShiftForm() {
             type="radio"
             name="action"
             value="in"
-            checked={action === 'in'}
-            onChange={() => setAction('in')}
+            checked={action === "in"}
+            onChange={() => setAction("in")}
             style={styles.radio}
           />
           <label style={styles.radioLabel}>OUT</label>
@@ -82,13 +90,15 @@ function ShiftForm() {
             type="radio"
             name="action"
             value="out"
-            checked={action === 'out'}
-            onChange={() => setAction('out')}
+            checked={action === "out"}
+            onChange={() => setAction("out")}
             style={styles.radio}
           />
         </div>
 
-        <label style={styles.label}>Reason for Shift Deviation (if applicable):</label>
+        <label style={styles.label}>
+          Reason for Shift Deviation (if applicable):
+        </label>
         <input
           type="text"
           value={rsd}
@@ -96,9 +106,18 @@ function ShiftForm() {
           style={styles.input}
         />
 
-        <button type="submit" style={styles.submitButton}>SUBMIT</button>
+        <button type="submit" style={styles.submitButton}>
+          SUBMIT
+        </button>
         {message && <p style={styles.message}>{message}</p>}
+
+        
       </form>
+      <p style={{ color: "#d8000c", fontSize: "20px", marginTop: "50px" }}>
+          ⚠️ <strong>Note:</strong> The hours recorded in this form are for
+          internal shift tracking purposes only. You are still responsible for
+          submitting your hours separately in Workday.
+        </p>
     </div>
   );
 }

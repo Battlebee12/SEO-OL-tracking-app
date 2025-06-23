@@ -24,4 +24,8 @@ router.get('/export', shiftController.exportShiftsToExcel);
 
 router.get('/total-hours', shiftController.getTotalHours);
 
+router.get('/shift-exceptions', shiftController.getProblematicShifts);
+
+router.put('/:id', shiftController.updateShiftById);
+
 module.exports = router;

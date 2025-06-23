@@ -19,10 +19,13 @@ const Home = () => {
           </div>
         </Link>
 
-        <div className="card">
-          <h2>GROUP WALK INS</h2>
-          <p>FOR ADDING NEW STUDENTS TO GROUPS</p>
-        </div>
+        {/* Link wrapper for admin dashboard */}
+        <Link to="/pshifts" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <div className="card">
+            <h2>VIEW PAST SHIFTS</h2>
+            <p>View Past Shifts</p>
+          </div>
+        </Link>
         
       </div>
     </div>
