@@ -5,9 +5,9 @@ import "./AdminDashboard.css";
 
 const AdminDashboard = () => {
   const [studentId, setStudentId] = useState("");
-  const [name, setName] = useState("");
+  const [name] = useState("");
   const [date, setDate] = useState("");
-  const [gid, setGid] = useState("");
+  const [gid] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
 

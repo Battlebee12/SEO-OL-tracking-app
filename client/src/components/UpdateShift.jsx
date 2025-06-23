@@ -175,7 +175,7 @@ const AdminDashboard = () => {
                 onSubmit={async (e) => {
                   e.preventDefault();
                   try {
-                    const res = await axios.put(
+                    await axios.put(
                       `${process.env.REACT_APP_API_BASE}/api/shifts/${editShift.id}`,
                       editShift
                     );
