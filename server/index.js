@@ -7,9 +7,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = [
-  'https://sparkling-clafoutis-d60a03.netlify.app',
+  'https://trackmyshifts.netlify.app',
   'http://localhost:3000'
 ];
+
 
 app.use(cors({
   origin: function (origin, callback) {
