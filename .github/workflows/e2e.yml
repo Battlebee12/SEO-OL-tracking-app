@@ -79,6 +79,14 @@ jobs:
       run: |
         cd client
         npx playwright install --with-deps
+    - name: Print seeded shifts
+      run: |
+         sudo apt-get install postgresql-client
+         psql -h localhost -U postgres -d testdb -c "SELECT * FROM Shifts;"
+      env:
+        PGPASSWORD: postgres
+
+    
 
     - name: Run Playwright tests
       run: |
