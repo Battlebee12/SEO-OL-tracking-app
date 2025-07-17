@@ -13,7 +13,9 @@
   },
   
   "scripts": {
-  "test": "jest"
+  "test": "jest",
+  "migrate": "node scripts/migrate.js",
+  "seed": "node scripts/seed.js"
   }
 
 }
