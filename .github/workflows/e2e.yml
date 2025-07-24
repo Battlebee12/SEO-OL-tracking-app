@@ -54,6 +54,12 @@ jobs:
         cd server
         npm run seed
 
+    - name: Run Supertest backend API tests
+      run: |
+        cd server
+        npm test
+
+
 
     - name: Start backend
       run: |
