@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./AdminDashboard.css"; // Ensure this CSS file exists and styles match the design
+import "./AdminDashboard.css"; 
 
 const AdminProtected = ({ children }) => {
   const [accessGranted, setAccessGranted] = useState(false);
